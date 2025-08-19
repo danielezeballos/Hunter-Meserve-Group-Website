@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flashing Text Link</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: white;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+    a {
+      font-size: 2rem;
+      text-decoration: none;
+      color: whitesmoke;
+      transition: opacity 0.3s ease;
+    }
+    .hidden {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <a id="flashingText" href="#" target="_blank">Loading...</a>
+
+  <script>
+    const items = [
+      { text: "Hunter Meserve Group", url: "https://www.instagram.com/huntermeservegroup/" },
+      { text: "Spike Art Magazine", url: "https://spikeartmagazine.com/articles/interview-read-me-to-filth-honor-levy" },
+      { text: "Carlotta S.", url: "https://www.carlottas.eu/index.html" },
+      { text: "Dazed", url: "https://www.dazeddigital.com/music/article/66341/1/nettspend-an-audience-with-the-polarising-prince-of-trap" },
+      { text: "Chicago", url: "https://www.instagram.com/chicago_____/" },
+      
+       { text: "Joan Horrach Vidal", url: "https://log.fakewhale.xyz/fakewhale-in-dialogue-with-joan-horrach/?fbclid=PAZXh0bgNhZW0CMTEAAacOfEuP6bVcvP_O-WxO57A8ykrBQAmhyzMD6UTEkOqVffwB8VYXUiHcFDNrnA_aem_lQbWVP3xO6kFdGe2VSiYcQ" },
+      { text: "notesfromthegroves", url: "https://www.notesfromthegroves.com/" },
+      { text: "Goomheo", url: "https://www.instagram.com/p/Cxss5a2S-lM/" },
+      
+      { text: "Free Advice", url: "https://freeadvice.xyz/" }
+    ];
+
+    let index = 0;
+    const flashingText = document.getElementById("flashingText");
+
+    function updateText() {
+      // Toggle visibility off
+      flashingText.classList.add("hidden");
+
+      setTimeout(() => {
+        // Update text and URL
+        const item = items[index];
+        flashingText.textContent = item.text;
+        flashingText.href = item.url;
+
+        // Toggle visibility on
+        flashingText.classList.remove("hidden");
+
+        // Move to next item
+        index = (index + 1) % items.length;
+      }, 300); // Delay before showing new text
+    }
+
+    // Start flashing
+    updateText();
+    setInterval(updateText, 2000);
+  </script>
+</body>
+</html>
+
