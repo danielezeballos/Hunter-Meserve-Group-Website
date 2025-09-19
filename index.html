@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hunter Meserve Group</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: white;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: sans-serif;
+      cursor: pointer; /* shows it's clickable */
+    }
+    a {
+      font-size: 2rem;
+      text-decoration: none;
+      color: lightgray;
+      opacity: 50%;
+      transition: opacity 0.3s ease;
+      cursor: default; /* link itself looks normal */
+    }
+    .hidden {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <a id="flashingText" href="#" target="_blank">Loading...</a>
+
+  <script>
+    const items = [
+      { text: "Hunter Meserve Group", url: "https://www.instagram.com/huntermeservegroup/" },
+      { text: "Spike Art Magazine", url: "https://spikeartmagazine.com/articles/interview-read-me-to-filth-honor-levy" },
+      { text: "Carlotta S.", url: "https://www.carlottas.eu/index.html" },
+      { text: "Dazed", url: "https://www.dazeddigital.com/music/article/66341/1/nettspend-an-audience-with-the-polarising-prince-of-trap" },
+      { text: "Joan Horrach Vidal", url: "https://log.fakewhale.xyz/fakewhale-in-dialogue-with-joan-horrach/?fbclid=PAZXh0bgNhZW0CMTEAAacOfEuP6bVcvP_O-WxO57A8ykrBQAmhyzMD6UTEkOqVffwB8VYXUiHcFDNrnA_aem_lQbWVP3xO6kFdGe2VSiYcQ" },
+      { text: "notesfromthegroves", url: "https://www.notesfromthegroves.com/" },
+      { text: "Goomheo", url: "https://www.instagram.com/p/Cxss5a2S-lM/" },
+      { text: "Hollywood Superstar Review", url: "https://www.instagram.com/p/DGoId90sIL6/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA%3D%3D" },
+      { text: "Free Advice", url: "https://freeadvice.xyz/" }
+    ];
+
+    let index = 0;
+    const flashingText = document.getElementById("flashingText");
+
+    function updateText() {
+      flashingText.classList.add("hidden");
+      setTimeout(() => {
+        const item = items[index];
+        flashingText.textContent = item.text;
+        flashingText.href = item.url;
+        flashingText.classList.remove("hidden");
+        index = (index + 1) % items.length;
+      }, 300);
+    }
+
+    updateText();
+    setInterval(updateText, 2000);
+
+    // Redirect when clicking whitespace (not the link itself)
+    document.body.addEventListener("click", (e) => {
+      if (e.target !== flashingText) {
+        window.location.href = "index2.html";
+      }
+    });
+  </script>
+</body>
+</html>

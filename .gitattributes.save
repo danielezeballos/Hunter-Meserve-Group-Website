@@ -1,0 +1,8 @@
+git add .gitattributes
+git rm --cached *.jpg *.jpeg *.png *.gif *.tif *.zip
+git add .
+git commit -m "Remove images from Git LFS and track normally"
+git push origin main --force
+git lfs ls-file *.zip 
+filter=lfs 
+diff=lfs merge=lfs -text
